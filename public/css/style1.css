@@ -1,0 +1,596 @@
+
+
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+.container{
+  max-width: 1300px !important;
+}
+
+#content {
+    padding: 0px 0px 0px 30px;
+}
+
+
+
+.findUser form {
+    width: 100%;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    border: 1px solid #686b82;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+
+.findUser form input {
+    background: transparent;
+    height: 40px;
+    width: 85%;
+    color: #000000;
+    padding: 0px 10px;
+    transition: .5s;
+    border: none;
+}
+
+.findUser form input:focus {
+    box-shadow: 0px 0px 15px 0px #16d4d4;
+}
+
+.findUser form button {
+    height: 40px;
+    width: 40px;
+    background: #686b82;
+    color: #fff;
+    font-size: 17px;
+    border: none;
+}
+
+.findUser ::placeholder{
+  color: #000;
+  padding: 0;
+}
+
+
+
+/*=============================navbar // start ===========================*/
+#top_navbar {
+    background: #efefef;
+}
+
+#sidebarCollapse {
+    display: none;
+}
+
+.navbar-brand img {
+    width: 100%;
+    max-width: 160px;
+}
+
+.navbar {
+    background: transparent !important;
+    border: none;
+    box-shadow: none;
+    justify-content: space-between;
+}
+
+#sidebar {
+    min-width: 300px;
+    max-width: 300px;
+    background: #ffffff;
+    color: #030303;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    box-shadow: 0px 0px 12px 0px #0000001c;
+    border-radius: 10px;
+    height: 100%;
+}
+
+
+
+
+.search_for_mobile {
+    display: none;
+}
+
+.table-recponsives table td.column5.color1{
+  color: #f0443f;
+}
+
+.table-recponsives table td.column5.color2{
+  color: #26cfc4;
+}
+/*=============================navbar // end ===========================*/
+
+
+/*=============================sidebar // end ===========================*/
+
+.filer-detail h3 {
+    font-size: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.market {
+    margin: 10px 0px 25px 0px;
+}
+
+.market.country_select label {
+    margin-bottom: 7px;
+}
+
+.market h2 , .market label {
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.market form {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.market form input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid;
+}
+
+::placeholder{
+  padding: 0px 0px 0px 40px;
+}
+
+.market form span {
+    /* padding: 0px 10px; */
+    font-size: 17px;
+}
+
+
+
+.radioStyle {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  justify-content: space-between;
+}
+
+/* Hide the browser's default radio button */
+.radioStyle input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.radioStyle .checkmark {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 20px !important;
+  width: 20px !important;
+  border-radius: 50%;
+  border: 1px solid #a9a0a0;
+}
+
+/* On mouse-over, add a grey background color */
+.radioStyle:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radioStyle input:checked ~ .checkmark {
+  background-color: #656565;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radioStyle input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radioStyle .checkmark:after {
+  top: 5px;
+  left: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.radioStyle span {
+    margin: 0px 4px;
+}
+
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #000000;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ Table ]*/
+
+.content_title {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.content_title h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+}
+
+.content_title span {
+    color: #9b9b9b;
+    margin: 0px 0px 0px 10px;
+}
+
+.button_nxt_pre a:nth-child(1) {
+    background: #ababab;
+    color: #ffff;
+    margin-right: 10px;
+}
+
+.button_nxt_pre a {
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    border: 1px solid #ababab;
+    text-align: center;
+    line-height: 40px;
+    color: #ababab;
+    border-radius: 4px;
+}
+
+.table-recponsives .table100 {
+  background-color: #fff;
+}
+
+.table-recponsives table {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 0px 15px 0px #0000000d;
+}
+
+.table-recponsives table tr {
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.table-recponsives td {
+  font-weight: unset;
+  padding: 10px;
+}
+
+
+
+.table-recponsives .table100-body td , .table-recponsives .table100-head th {padding: 20px 10px;width: 50%;}
+
+
+
+ .table-recponsives table tr th {
+  font-size: 16px;
+  color: #000;
+  line-height: 1.4;
+  padding: 20px 10px;
+  font-weight: 500;
+}
+
+
+
+ .table-recponsives table td {
+  font-size: 15px;
+  color: #808080;
+  line-height: 1.4;
+}
+
+.column1 i, .column2 i, .column3 i, .column4 i, .column5 i {
+    margin-right: 5px;
+}
+
+.table-recponsives .head th form {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+ .inputChecked {
+  display: block;
+  position: relative;
+  padding-left: 31px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 0;
+}
+
+ .inputChecked input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+ .checkmark {
+  position: absolute;
+  top: 4px;
+  left: -1px;
+  height: 21px;
+  width: 20px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+
+ .inputChecked:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+ .inputChecked input:checked ~ .checkmark {
+  background-color: #686b82;
+}
+
+ .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+
+ .inputChecked input:checked ~ .checkmark:after {
+  display: block;
+}
+
+ .inputChecked .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.market.country_select form {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.table-recponsives .companyDetail img {
+    width: 100%;
+    max-width: 40px;
+    margin: 5px;
+}
+
+.table-recponsives .table100.ver1 td form {
+    display: flex;
+    align-items: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+}
+
+.table-recponsives .companyDetail {
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    padding-left: 5px;
+}
+
+.table-recponsives .companyInfo h4 {
+    font-size: 16px;
+    margin: 0;
+    color: #757575;
+}
+
+.table-recponsives .companyInfo p {
+    margin: 0;
+    font-size: 16px;
+    color: #000;
+}
+
+.table-recponsives .companyInfo {
+    margin-left: 10px;
+}
+
+.table-recponsives .dots_color i {
+    font-size: 6px;
+}
+
+.table-recponsives .column6 {
+    text-align: right;
+}
+
+.table-recponsives .check-color {
+    color: #0e82e5;
+}
+
+.table-recponsives .column3 {
+    text-align: center;
+}
+
+.table-recponsives .column3 i {
+    color: #26cfc4;
+    margin: 0px 5px 0px 0px;
+}
+.table-recponsives .column2 {
+    text-align: center;
+}
+
+
+/*=============================navbar // end ===========================*/
+
+/*=============================Reponsiveness // start ===========================*/
+
+
+@media (max-width: 1200px) {
+
+}
+
+
+@media (max-width: 992px) {
+#sidebar {
+    margin-left: -322px ;
+}
+
+#sidebarCollapse {
+     display: block !important;
+     margin-right: 20px;
+}
+
+.findUser.desktop_view {
+    display: none;
+}
+
+.search_for_mobile {
+    display: block;
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 25px;
+}
+.navbar {
+    margin-bottom: 30px;
+}
+}
+
+
+@media (max-width: 768px) {
+.table-recponsives table {
+    width: 800px;
+}
+
+.table-recponsives {
+    overflow: auto;
+}
+.wrapper {
+    overflow: auto;
+}
+}
+
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 480px) {
+.content_title {
+    flex-direction: column;
+}
+.content_title h3 {
+    margin: 0px 0px 20px 0px;
+}
+}
+
+@media (max-width: 360px) {
+.navbar-brand img {
+    width: 100%;
+    max-width: 130px;
+}
+
+
+}
+
+
+/*=============================Reponsiveness // end ===========================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
