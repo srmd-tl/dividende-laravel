@@ -28,5 +28,7 @@ class SymbolSeeder extends Seeder
         Symbol::insert($ukArr);
         Symbol::insert($deArr);
         Symbol::insert($frArr);
+
+        Symbol::whereType('FUND')->delete();
     }
 }

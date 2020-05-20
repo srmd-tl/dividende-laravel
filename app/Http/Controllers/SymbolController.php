@@ -15,6 +15,7 @@ class SymbolController extends Controller
      */
     public function index()
     {
+        Symbol::whereType('FUND')->delete();
       
         dd(Symbol::all()->count());
 
