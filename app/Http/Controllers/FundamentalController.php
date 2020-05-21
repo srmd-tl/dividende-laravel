@@ -16,9 +16,13 @@ class FundamentalController extends Controller
     public function index()
     {
         $country            = request()->country ?? 'France';
-        $symbolFundamentals = Fundamental::with(['symbol'=>function($query) use ($country){
+        $symbolFundamentals =Fundamental::whereHas('symbol',function($query) use ($country){
             return $query->whereCountry($country);
-        }])->paginate(20);
+        })->paginate(20);
+
+        // $symbolFundamentals = Fundamental::with(['symbol'=>function($query) use ($country){
+        //     return $query->whereCountry($country);
+        // }])->paginate(20);
         return view('index',['symbolFundamentals'=>$symbolFundamentals]);
     }
 
