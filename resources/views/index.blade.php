@@ -104,21 +104,21 @@
                         </form>
                         <div class="market country_select">
                            <h2>Country</h2>
-                           <form action="" class="market">
+                        <form action="{{route('index')}}" class="market" method="GET" id="countryForm">
                            <label class="radioStyle"><span>France</span>
-                           <input type="radio" checked="checked" name="country">
+                           <input type="radio" {{request()->country=='France'?'checked':''}} name="country" value="France">
                            <span class="checkmark"></span>
                            </label>
                            <label class="radioStyle"><span>United States</span>
-                           <input type="radio"  name="country">
+                           <input type="radio" {{request()->country=='US'?'checked':''}}  name="country" value="US">
                            <span class="checkmark"></span>
                            </label>
                            <label class="radioStyle"><span>United Kingdom</span>
-                           <input type="radio"  name="country">
+                           <input type="radio" {{request()->country=='UK'?'checked':''}}  name="country" value="UK">
                            <span class="checkmark"></span>
                            </label>
                            <label class="radioStyle"><span>Germany</span>
-                           <input type="radio"  name="country">
+                           <input type="radio" {{request()->country=='Germany'?'checked':''}}  name="country" value="Germany">
                            <span class="checkmark"></span>
                            </label>
                         </form>
@@ -145,7 +145,7 @@
                               <th class="column2">Market Cap</th>
                               <th class="column3"><i class="fa fa-caret-down" aria-hidden="true"></i> Div. Yield</th>
                               <th class="column4">Price History</th>
-                              <th class="column5 color1">1Y 2Y 3Y</th>
+                              <!-- <th class="column5 color1">1Y 2Y 3Y</th> -->
                               <th class="column6">P/E Radio</th>
                            </tr>
                            @forelse($symbolFundamentals as $fundamental)
@@ -167,7 +167,7 @@
                               <td class="column4">
                                  <img src="images/graph.png" alt="">
                               </td>
-                              <td class="column5 color2"><i class="fa fa-caret-up" aria-hidden="true"></i>10.79%</td>
+                              <!-- <td class="column5 color2"><i class="fa fa-caret-up" aria-hidden="true"></i>10.79%</td> -->
                               <td class="column6">
                                  <div class="">
                                     <span>{{$fundamental->pe_ratio}}</span>
@@ -205,5 +205,12 @@
       <script src="{{asset('js/popper.js')}}"></script>
       <script src="{{asset('js/bootstrap.min.js')}}"></script>
       <script src="{{asset('js/main.js')}}"></script>
+      <script type="text/javascript">
+         $(function(){
+            $('input[name="country"]').change(function(){
+               $("#countryForm").submit()
+            });
+         })
+      </script>
    </body>
 </html>

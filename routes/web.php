@@ -12,6 +12,6 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/','FundamentalController@index');
+Route::get('/','FundamentalController@index')->name('index');
 
 Route::resource('symbol','SymbolController');
