@@ -110,7 +110,7 @@
                            <span class="checkmark"></span>
                            </label>
                            <label class="radioStyle"><span>United States</span>
-                           <input type="radio" {{request()->country=='US'?'checked':''}}  name="country" value="US">
+                           <input type="radio" {{request()->country=='USA'?'checked':''}}  name="country" value="USA">
                            <span class="checkmark"></span>
                            </label>
                            <label class="radioStyle"><span>United Kingdom</span>
