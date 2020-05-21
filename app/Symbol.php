@@ -14,5 +14,9 @@ class Symbol extends Model
      */
     protected $guarded = [
     ];
-
+    //Relations
+    public function fundamental()
+    {
+        return $this->hasOne('App\Fundamental');
+    }
 }

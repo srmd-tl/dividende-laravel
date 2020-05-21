@@ -12,30 +12,6 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('eod', function () {
-
-    $stock = Eod::stock();
-
-// JSON
-   dd($stock->fundamental('AAPL.US')->json());
-  
-
-    $exchange = Eod::exchange();
-// JSON
-    $data = $exchange->symbol('US')->json();
-    dd($data);
-});
-
-Route::get('ticker', function () {
-    $exchange = Eod::exchange();
-    $data     = $exchange->multipleTicker('US')->json();
-    dd($data);
-
-});
-
+Route::get('/','FundamentalController@index');
 
 Route::resource('symbol','SymbolController');

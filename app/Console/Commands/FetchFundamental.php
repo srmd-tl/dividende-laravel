@@ -44,6 +44,7 @@ class FetchFundamental extends Command
     {
         $stock   = Eod::stock();
         $symbols = Symbol::whereType('Common Stock')->get();
+        dd($symbols->count());
 
         foreach ($symbols as $symbol) {
             try {
@@ -59,7 +60,7 @@ class FetchFundamental extends Command
                     ];
                     Fundamental::create($insertionData);
                     if (is_null($symbol->logo)) {
-                        $symbol->update(['logo' =>"https://eodhistoricaldata.com" . $data->General->LogoURL]);
+                        $symbol->update(['logo' =>$data->General->LogoURL?"https://eodhistoricaldata.com" . $data->General->LogoURL:null]);
 
                     }
                 }

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
    <head>
-      <title>Sidebar 01</title>
+      <title>Dividende</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -16,7 +16,7 @@
          <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
               
-               <a class="navbar-brand" href="#"><img src="images/logo1.png" alt=""></a>
+               <a class="navbar-brand" href="#"><img src="{{asset('images/logo.png')}}" alt=""></a>
                <button type="button" id="sidebarCollapse" class="btn btn-primary">
                <i class="fa fa-bars"></i>
                <span class="sr-only">Toggle Menu</span>
@@ -148,27 +148,29 @@
                               <th class="column5 color1">1Y 2Y 3Y</th>
                               <th class="column6">P/E Radio</th>
                            </tr>
+                           @forelse($symbolFundamentals as $fundamental)
+
                            <tr class="row100 body">
                               <td class="cell100 column1">
                                  <form action="">
                                     <div class="companyDetail">
-                                       <img src="images/amazon_PNG5.png" alt="icon">
+                                       <img src="{{$fundamental->symbol->logo}}" alt="icon">
                                        <div class="companyInfo">
-                                          <h4>AMZN</h4>
-                                          <p>Amazon</p>
+                                          <h4>{{$fundamental->symbol->Code}}</h4>
+                                          <p>{{$fundamental->symbol->Name}}</p>
                                        </div>
                                     </div>
                                  </form>
                               </td>
-                              <td class="column2">840.4B</td>
-                              <td class="column3">--</td>
+                              <td class="column2">{{$fundamental->market_cap}}</td>
+                              <td class="column3">{{$fundamental->dividend_yield}}</td>
                               <td class="column4">
                                  <img src="images/graph.png" alt="">
                               </td>
                               <td class="column5 color2"><i class="fa fa-caret-up" aria-hidden="true"></i>10.79%</td>
                               <td class="column6">
                                  <div class="">
-                                    <span>93.5</span>
+                                    <span>{{$fundamental->pe_ratio}}</span>
                                     <div class="dots_color">
                                        <i class="fa fa-circle check-color" aria-hidden="true"></i>
                                        <i class="fa fa-circle check-color" aria-hidden="true"></i>
@@ -178,257 +180,20 @@
                                     </div>
                                  </div>
                               </td>
-                           </tr>
-                           <tr class="row100 body">
-                              <td class="cell100 column1">
-                                 <form action="">
-                                    <div class="companyDetail">
-                                       <img src="images/windows_logos_PNG23.png" alt="icon">
-                                       <div class="companyInfo">
-                                          <h4>AMZN</h4>
-                                          <p>Amazon</p>
-                                       </div>
-                                    </div>
-                                 </form>
-                              </td>
-                              <td class="column2">840.4B</td>
-                              <td class="column3">--</td>
-                              <td class="column4">
-                                 <img src="images/graph.png" alt="">
-                              </td>
-                              <td class="column5 color1"><i class="fa fa-caret-down" aria-hidden="true"></i>10.79%</td>
-                              <td class="column6">
-                                 <div class="">
-                                    <span>93.5</span>
-                                    <div class="dots_color">
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle" aria-hidden="true"></i>
-                                    </div>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr class="row100 body">
-                              <td class="cell100 column1">
-                                 <form action="">
-                                    <div class="companyDetail">
-                                       <img src="images/apple_logo_PNG19670.png" alt="icon">
-                                       <div class="companyInfo">
-                                          <h4>AMZN</h4>
-                                          <p>Amazon</p>
-                                       </div>
-                                    </div>
-                                 </form>
-                              </td>
-                              <td class="column2">840.4B</td>
-                              <td class="column3">--</td>
-                              <td class="column4">
-                                 <img src="images/graph.png" alt="">
-                              </td>
-                              <td class="column5 color1"><i class="fa fa-caret-down" aria-hidden="true"></i>10.79%</td>
-                              <td class="column6">
-                                 <div class="">
-                                    <span>93.5</span>
-                                    <div class="dots_color">
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle" aria-hidden="true"></i>
-                                    </div>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr class="row100 body">
-                              <td class="cell100 column1">
-                                 <form action="">
-                                    <div class="companyDetail">
-                                       <img src="images/amazon_PNG5.png" alt="icon">
-                                       <div class="companyInfo">
-                                          <h4>AMZN</h4>
-                                          <p>Amazon</p>
-                                       </div>
-                                    </div>
-                                 </form>
-                              </td>
-                              <td class="column2">840.4B</td>
-                              <td class="column3">--</td>
-                              <td class="column4">
-                                 <img src="images/graph.png" alt="">
-                              </td>
-                              <td class="column5 color2"><i class="fa fa-caret-up" aria-hidden="true"></i>10.79%</td>
-                              <td class="column6">
-                                 <div class="">
-                                    <span>93.5</span>
-                                    <div class="dots_color">
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle" aria-hidden="true"></i>
-                                    </div>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr class="row100 body">
-                              <td class="cell100 column1">
-                                 <form action="">
-                                    <div class="companyDetail">
-                                       <img src="images/amazon_PNG5.png" alt="icon">
-                                       <div class="companyInfo">
-                                          <h4>AMZN</h4>
-                                          <p>Amazon</p>
-                                       </div>
-                                    </div>
-                                 </form>
-                              </td>
-                              <td class="column2">840.4B</td>
-                              <td class="column3">--</td>
-                              <td class="column4">
-                                 <img src="images/graph.png" alt="">
-                              </td>
-                              <td class="column5 color2"><i class="fa fa-caret-up" aria-hidden="true"></i>10.79%</td>
-                              <td class="column6">
-                                 <div class="">
-                                    <span>93.5</span>
-                                    <div class="dots_color">
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle" aria-hidden="true"></i>
-                                    </div>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr class="row100 body">
-                              <td class="cell100 column1">
-                                 <form action="">
-                                    <div class="companyDetail">
-                                       <img src="images/apple_logo_PNG19670.png" alt="icon">
-                                       <div class="companyInfo">
-                                          <h4>AMZN</h4>
-                                          <p>Amazon</p>
-                                       </div>
-                                    </div>
-                                 </form>
-                              </td>
-                              <td class="column2">840.4B</td>
-                              <td class="column3">--</td>
-                              <td class="column4">
-                                 <img src="images/graph.png" alt="">
-                              </td>
-                              <td class="column5 color1"><i class="fa fa-caret-down" aria-hidden="true"></i>10.79%</td>
-                              <td class="column6">
-                                 <div class="">
-                                    <span>93.5</span>
-                                    <div class="dots_color">
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle" aria-hidden="true"></i>
-                                    </div>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr class="row100 body">
-                              <td class="cell100 column1">
-                                 <form action="">
-                                    <div class="companyDetail">
-                                       <img src="images/amazon_PNG5.png" alt="icon">
-                                       <div class="companyInfo">
-                                          <h4>AMZN</h4>
-                                          <p>Amazon</p>
-                                       </div>
-                                    </div>
-                                 </form>
-                              </td>
-                              <td class="column2">840.4B</td>
-                              <td class="column3">--</td>
-                              <td class="column4">
-                                 <img src="images/graph.png" alt="">
-                              </td>
-                              <td class="column5 color2"><i class="fa fa-caret-up" aria-hidden="true"></i>10.79%</td>
-                              <td class="column6">
-                                 <div class="">
-                                    <span>93.5</span>
-                                    <div class="dots_color">
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle" aria-hidden="true"></i>
-                                    </div>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr class="row100 body">
-                              <td class="cell100 column1">
-                                 <form action="">
-                                    <div class="companyDetail">
-                                       <img src="images/apple_logo_PNG19670.png" alt="icon">
-                                       <div class="companyInfo">
-                                          <h4>AMZN</h4>
-                                          <p>Amazon</p>
-                                       </div>
-                                    </div>
-                                 </form>
-                              </td>
-                              <td class="column2">840.4B</td>
-                              <td class="column3">--</td>
-                              <td class="column4">
-                                 <img src="images/graph.png" alt="">
-                              </td>
-                              <td class="column5 color1"><i class="fa fa-caret-down" aria-hidden="true"></i>10.79%</td>
-                              <td class="column6">
-                                 <div class="">
-                                    <span>93.5</span>
-                                    <div class="dots_color">
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle" aria-hidden="true"></i>
-                                    </div>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr class="row100 body">
-                              <td class="cell100 column1">
-                                 <form action="">
-                                    <div class="companyDetail">
-                                       <img src="images/amazon_PNG5.png" alt="icon">
-                                       <div class="companyInfo">
-                                          <h4>AMZN</h4>
-                                          <p>Amazon</p>
-                                       </div>
-                                    </div>
-                                 </form>
-                              </td>
-                              <td class="column2">840.4B</td>
-                              <td class="column3">--</td>
-                              <td class="column4">
-                                 <img src="images/graph.png" alt="">
-                              </td>
-                              <td class="column5 color2"><i class="fa fa-caret-up" aria-hidden="true"></i>10.79%</td>
-                              <td class="column6">
-                                 <div class="">
-                                    <span>93.5</span>
-                                    <div class="dots_color">
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle check-color" aria-hidden="true"></i>
-                                       <i class="fa fa-circle" aria-hidden="true"></i>
-                                    </div>
-                                 </div>
-                              </td>
-                           </tr>
+                           </tr> 
+                           @empty
+                           <tr><td>NOthing FOund!</td></tr>
+                           @endforelse
+                          
 
                         </tbody>
+                        <tfoot>
+                           <tr>
+                              <td>
+                                 {{$symbolFundamentals->links()}}
+                              </td>
+                           </tr>
+                        </tfoot>
                      </table>
                   </div>
                </div>

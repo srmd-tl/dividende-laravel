@@ -14,5 +14,9 @@ class Fundamental extends Model
      */
     protected $guarded = [
     ];
-
+ //Relations
+    public function symbol()
+    {
+        return $this->belongsTo('App\Symbol');
+    }
 }

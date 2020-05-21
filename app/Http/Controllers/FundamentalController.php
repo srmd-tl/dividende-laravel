@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Fundamental;
+use App\Symbol;
 use Illuminate\Http\Request;
 
 class FundamentalController extends Controller
@@ -14,7 +15,11 @@ class FundamentalController extends Controller
      */
     public function index()
     {
-        //
+        $country            = request()->country ?? 'France';
+        $symbolFundamentals = Fundamental::with(['symbol'=>function($query) use ($country){
+            return $query->whereCountry($country);
+        }])->paginate(20);
+        return view('index',['symbolFundamentals'=>$symbolFundamentals]);
     }
 
     /**
