@@ -190,7 +190,7 @@
                         <tfoot>
                            <tr>
                               <td>
-                                 {{$symbolFundamentals->links()}}
+                                 {{$symbolFundamentals->withQueryString()->links()}}
                               </td>
                            </tr>
                         </tfoot>
