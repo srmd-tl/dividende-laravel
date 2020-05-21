@@ -48,7 +48,7 @@ class FetchFundamental extends Command
         try {
 
             foreach ($symbols as $symbol) {
-                $data = json_decode($stock->fundamental($symbol->code . ',' . $symbol->Country == 'USA' ? 'US' : $symbol->Exchange)->json());
+                $data = json_decode($stock->fundamental($symbol->code . '.' . $symbol->Country == 'USA' ? 'US' : $symbol->Exchange)->json());
                 if ($data) {
                     $insertionData = [
                         "symbol_id"      => $symbol->id,
