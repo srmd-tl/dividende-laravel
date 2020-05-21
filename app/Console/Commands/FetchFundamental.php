@@ -59,7 +59,7 @@ class FetchFundamental extends Command
                     ];
                     Fundamental::create($insertionData);
                     if (is_null($symbol->logo)) {
-                        $symbol->update(['logo' => $data->General->WebURL . $data->General->LogoURL]);
+                        $symbol->update(['logo' =>"https://eodhistoricaldata.com" . $data->General->LogoURL]);
 
                     }
                 }
