@@ -45,9 +45,8 @@ class FetchFundamental extends Command
         $stock   = Eod::stock();
         $symbols = Symbol::whereType('Common Stock')->get();
 
-        try {
-
-            foreach ($symbols as $symbol) {
+        foreach ($symbols as $symbol) {
+            try {
                 $data = json_decode($stock->fundamental($symbol->Code . '.' . ($symbol->Country == 'USA' ? 'US' : $symbol->Exchange))->json());
                 if ($data) {
                     $insertionData = [
@@ -59,11 +58,14 @@ class FetchFundamental extends Command
 
                     ];
                     Fundamental::create($insertionData);
-                }
+                    if (is_null($symbol->logo)) {
+                        $symbol->update(['logo' => $data->General->WebURL . $data->General->LogoURL])
 
+                    }
+                }
+            } catch (Exception $e) {
+                Log::info($e->getMessage());
             }
-        } catch (Exception $e) {
-            Log::info($e->getMessage());
 
         }
 

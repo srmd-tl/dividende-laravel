@@ -7,4 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Symbol extends Model
 {
     //
+    /**
+     * The attributes that are not mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [
+    ];
+
 }
