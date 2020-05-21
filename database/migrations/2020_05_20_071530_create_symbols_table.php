@@ -16,6 +16,7 @@ class CreateSymbolsTable extends Migration
         Schema::create('symbols', function (Blueprint $table) {
             $table->id();
             $table->string('Code');
+            // $table->string('Exchange_Code')->nullable();
             $table->string('Name');
             $table->string('Country');
             $table->string('Exchange')->nullable();
