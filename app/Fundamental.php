@@ -14,9 +14,46 @@ class Fundamental extends Model
      */
     protected $guarded = [
     ];
- //Relations
+    //Relations
     public function symbol()
     {
         return $this->belongsTo('App\Symbol');
     }
+    /**
+     * Set the market cap to M
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function getMarketCapAttribute($value)
+    {
+        $number = $value / 10000000;
+        return number_format($number, 0) . ' M';
+
+    }
+
+    /**
+     * Set the dividend yield to percentage
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function getDividendYieldAttribute($value)
+    {
+        $number = $value * 100;
+        return $number . ' %';
+
+    }
+    /**
+     * Set the pe ratio to 2 digit after decimal
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function getPeRatioAttribute($value)
+    {
+        return number_format($value, 2);
+
+    }
+
 }

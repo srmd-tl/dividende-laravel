@@ -575,7 +575,14 @@ input[type="text"]:focus {
 /*=============================Reponsiveness // end ===========================*/
 
 
-
+.add-three-dots{display: inline-block;
+width: 240px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+background: #FFFCD7;
+padding: 5px;
+}
 
 
 

@@ -129,7 +129,7 @@
                <!-- Page Content  -->
                <div id="content" >
                   <div class="content_title">
-                    <h3>Results <span>4,239total</span></h3>
+                    <h3>Results <span>{{$symbolFundamentals->total()}} total</span></h3>
                     <div class="button_nxt_pre">
                       <a href="#">Preview</a>
                       <a href="#">Next</a>
@@ -154,10 +154,16 @@
                               <td class="cell100 column1">
                                  <form action="">
                                     <div class="companyDetail">
+                                       @if(!isset($fundamental->symbol->logo)||$fundamental->symbol->logo==env('APP_URL'))
+                                       <img src="{{asset('images/nologo.png')}}" alt="icon">
+                                       @else
                                        <img src="{{$fundamental->symbol->logo}}" alt="icon">
+                                       @endif
+
+                                       
                                        <div class="companyInfo">
                                           <h4>{{$fundamental->symbol->Code}}</h4>
-                                          <p>{{$fundamental->symbol->Name}}</p>
+                                          <p class="add-three-dots">{{$fundamental->symbol->Name}}</p>
                                        </div>
                                     </div>
                                  </form>
