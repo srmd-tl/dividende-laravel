@@ -28,7 +28,8 @@ class Fundamental extends Model
     public function getMarketCapAttribute($value)
     {
         $number = $value / 1000000;
-        return number_format($number, 0) . ' M';
+        $number = number_format($number, 0) . ' M';
+        return str_replace(",", " ", $number);
 
     }
 
