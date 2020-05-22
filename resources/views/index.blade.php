@@ -46,85 +46,111 @@
           </div>
             <div class="wrapper d-flex ">
                <nav id="sidebar">
-                  <div class="p-4 pt-5">
-                     <div class="filer-detail">
-                        <h3>filter</h3>
-                        <div class="market">
-                           <h2>market capitalization</h2>
-                           <div class="market-form">
-                              <form action="">
-                                 <input type="text" placeholder="min">
-                                 <span>-</span>
-                                 <input type="text" placeholder="max">
-                              </form>
+                  <form method="GET" action="{{route('index')}}" id="filterForm">
+                     <div class="p-4 pt-5">
+                        <div class="filer-detail">
+                           <h3>filter</h3>
+                           <div class="market">
+                              <h2>market capitalization</h2>
+                              <div class="market-form">
+                                 
+                                    <input type="text" placeholder="min" name="minMc" value="{{request()->minMc??0}}">
+                                    <span>-</span>
+                                    <input type="text" placeholder="max" max="maxMc" value="{{request()->maxMc}}">
+                                
+                              </div>
                            </div>
-                        </div>
-                        <div class="market">
-                           <h2>P/E radio</h2>
-                           <div class="market-form">
-                              <form action="">
-                                 <input type="text" placeholder="min">
-                                 <span>-</span>
-                                 <input type="text" placeholder="max">
-                              </form>
+                           <div class="market">
+                              <h2>P/E radio</h2>
+                              <div class="market-form">
+                                    <input type="text" placeholder="min" name="minDy"  value="{{request()->minDy??0}}">
+                                    <span>-</span>
+                                    <input type="text"  placeholder="max" name="maxDy"  value="{{request()->maxDy}}">
+                              </div>
                            </div>
-                        </div>
-                        <div class="market">
-                           <h2>Diviend Yield (%)</h2>
-                           <div class="market-form">
-                              <form action="">
-                                 <input type="text" placeholder="min">
-                                 <span>-</span>
-                                 <input type="text" placeholder="max">
-                              </form>
+                           <div class="market">
+                              <h2>Diviend Yield (%)</h2>
+                              <div class="market-form">
+                                    <input type="text" placeholder="min" name="minPe" value="{{request()->minPe??0}}">
+                                    <span>-</span>
+                                    <input type="text"  placeholder="max" name="maxPe" value="{{request()->maxPe}}">
+                              </div>
                            </div>
-                        </div>
-                        <form action="" class="market">
-                           <h2>Select</h2>
-                           <label class="radioStyle"><span>Basic Materials</span> <span>6969</span>
-                           <input type="radio" checked="checked" name="radio1">
-                           <span class="checkmark"></span>
-                           </label>
-                           <label class="radioStyle"><span>Basic Materials</span> <span>6969</span>
-                           <input type="radio"  name="radio2">
-                           <span class="checkmark"></span>
-                           </label>
-                           <label class="radioStyle"><span>Basic Materials</span> <span>6969</span>
-                           <input type="radio"  name="radio3">
-                           <span class="checkmark"></span>
-                           </label>
-                           <label class="radioStyle"><span>Basic Materials</span> <span>6969</span>
-                           <input type="radio"  name="radio4">
-                           <span class="checkmark"></span>
-                           </label>
-                           <label class="radioStyle"><span>Basic Materials</span> <span>6969</span>
-                           <input type="radio"  name="radio5">
-                           <span class="checkmark"></span>
-                           </label>
-                        </form>
-                        <div class="market country_select">
-                           <h2>Country</h2>
-                        <form action="{{route('index')}}" class="market" method="GET" id="countryForm">
-                           <label class="radioStyle"><span>France</span>
-                           <input type="radio" {{request()->country=='France'?'checked':''}} name="country" value="France">
-                           <span class="checkmark"></span>
-                           </label>
-                           <label class="radioStyle"><span>United States</span>
-                           <input type="radio" {{request()->country=='USA'?'checked':''}}  name="country" value="USA">
-                           <span class="checkmark"></span>
-                           </label>
-                           <label class="radioStyle"><span>United Kingdom</span>
-                           <input type="radio" {{request()->country=='UK'?'checked':''}}  name="country" value="UK">
-                           <span class="checkmark"></span>
-                           </label>
-                           <label class="radioStyle"><span>Germany</span>
-                           <input type="radio" {{request()->country=='Germany'?'checked':''}}  name="country" value="Germany">
-                           <span class="checkmark"></span>
-                           </label>
-                        </form>
+                              <h2>Select</h2>
+
+
+
+
+
+
+
+
+
+                              <label class="radioStyle"><span>All</span> 
+                              <input type="radio" checked="checked" name="sector" value="all">
+                              <span class="checkmark"></span>
+                              </label>
+                              <label class="radioStyle">
+                                 <span>Consumer Defensive</span> 
+                              <input type="radio"  name="sector" value="Consumer Defensive">
+                              <span class="checkmark"></span>
+                              </label>
+                              <label class="radioStyle"><span>Consumer Cyclical</span> 
+                              <input type="radio"  name="sector" value="Consumer Cyclical">
+                              <span class="checkmark"></span>
+                              </label>
+                              <label class="radioStyle"><span>Financial Services</span> 
+                              <input type="radio"  name="sector" value="Financial Services">
+                              <span class="checkmark"></span>
+                              </label>
+                              <label class="radioStyle"><span>Healthcare</span> 
+                              <input type="radio"  name="sector" value="Healthcare">
+                              <span class="checkmark"></span>
+                              </label>
+                              <label class="radioStyle"><span>Real Estate</span> 
+                              <input type="radio"  name="sector" value="Real Estate">
+                              <span class="checkmark"></span>
+                              </label>
+                              <label class="radioStyle"><span>Energy</span> 
+                              <input type="radio"  name="sector" value="Energy">
+                              <span class="checkmark"></span>
+                              </label>    
+                              <label class="radioStyle"><span>Basic Materials</span> 
+                              <input type="radio"  name="sector" value="Basic Materials">
+                              <span class="checkmark"></span>
+                              </label>
+                              <label class="radioStyle"><span>Industrials</span> 
+                              <input type="radio"  name="sector" value="Industrials">
+                              <span class="checkmark"></span>
+                              </label> 
+                              <label class="radioStyle"><span>Other</span> 
+                              <input type="radio"  name="sector" value="Other">
+                              <span class="checkmark"></span>
+                              </label>
+                           <div class="market country_select">
+                              <h2>Country</h2>
+                           <!-- <form action="{{route('index')}}" class="market" method="GET" id="countryForm"> -->
+                              <label class="radioStyle"><span>France</span>
+                              <input type="radio" checked="checked" name="country" value="France">
+                              <span class="checkmark"></span>
+                              </label>
+                              <label class="radioStyle"><span>United States</span>
+                              <input type="radio" {{request()->country=='USA'?'checked':''}}  name="country" value="USA">
+                              <span class="checkmark"></span>
+                              </label>
+                              <label class="radioStyle"><span>United Kingdom</span>
+                              <input type="radio" {{request()->country=='UK'?'checked':''}}  name="country" value="UK">
+                              <span class="checkmark"></span>
+                              </label>
+                              <label class="radioStyle"><span>Germany</span>
+                              <input type="radio" {{request()->country=='Germany'?'checked':''}}  name="country" value="Germany">
+                              <span class="checkmark"></span>
+                              </label>
+                           <!-- </form> -->
+                           </div>
                         </div>
                      </div>
-                  </div>
+                  </form>
                </nav>
                <!-- Page Content  -->
                <div id="content" >
@@ -213,9 +239,30 @@
       <script src="{{asset('js/main.js')}}"></script>
       <script type="text/javascript">
          $(function(){
+            /*On change Country Filter*/
             $('input[name="country"]').change(function(){
+
                $("#countryForm").submit()
             });
+
+            /*End Country Filter*/
+
+            /*On chage Min  Market Cap filter*/
+            $("input[name='minMc']").change(function(){
+
+               $("#filterForm").submit()
+
+            });
+            /*End On chage Min  Market Cap filter*/
+
+            /*On chage  Max Market Cap filter*/
+            $("input[name='max']").change(function(){
+
+            });
+            /*End On chage  Max Market Cap filter*/
+
+
+      
          })
       </script>
    </body>
