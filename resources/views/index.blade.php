@@ -63,17 +63,19 @@
                            <div class="market">
                               <h2>P/E radio</h2>
                               <div class="market-form">
-                                    <input type="text" placeholder="min" name="minDy"  value="{{request()->minDy??0}}">
+                                      <input type="text" placeholder="min" name="minPe" value="{{request()->minPe??0}}">
                                     <span>-</span>
-                                    <input type="text"  placeholder="max" name="maxDy"  value="{{request()->maxDy}}">
+                                    <input type="text"  placeholder="max" name="maxPe" value="{{request()->maxPe}}">
+                                   
                               </div>
                            </div>
                            <div class="market">
                               <h2>Diviend Yield (%)</h2>
                               <div class="market-form">
-                                    <input type="text" placeholder="min" name="minPe" value="{{request()->minPe??0}}">
+                                  <input type="text" placeholder="min" name="minDy"  value="{{request()->minDy??0}}">
                                     <span>-</span>
-                                    <input type="text"  placeholder="max" name="maxPe" value="{{request()->maxPe}}">
+                                    <input type="text"  placeholder="max" name="maxDy"  value="{{request()->maxDy}}">
+                               
                               </div>
                            </div>
                               <h2>Select</h2>
