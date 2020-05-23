@@ -19,9 +19,9 @@ class FundamentalController extends Controller
         $symbolFundamentals = Fundamental::whereHas('symbol', function ($query) use ($country) {
             return $query->whereCountry($country);
         });
-        if (request()->minMc || request()->maxMc) {
+        if (request()->minMc || request()->maxMc||request()->minPe || request()->maxPe||request()->minDy || request()->maxDy||request()->sector ) {
 
-            $data = $symbolFundamentals->orWhere(function ($subQuery1) {
+            $data = $symbolFundamentals->where(function ($subQuery1) {
 
                 if (request()->maxMc) {
                     $subQuery1->where('market_cap', '>=', request()->minMc*100000)
@@ -31,7 +31,7 @@ class FundamentalController extends Controller
                 }
 
             })
-                ->orWhere(function ($subQuery2) {
+                ->where(function ($subQuery2) {
                     if (request()->maxMc) {
                         $subQuery2->where('dividend_yield', '>=', request()->minDy*100000)
                             ->where('dividend_yield', '<=', request()->maxDy*100000);
@@ -40,7 +40,7 @@ class FundamentalController extends Controller
                         $subQuery2->where('dividend_yield', '>=', request()->minDy*100000);
                     }
                 })
-                ->orWhere(function ($subQuery3) {
+                ->where(function ($subQuery3) {
                     if (request()->maxMc) {
                         $subQuery3->where('pe_ratio', '>=', request()->minPe*100000)
                             ->where('pe_ratio', '<=', request()->maxPe*100000);
@@ -48,7 +48,7 @@ class FundamentalController extends Controller
                         $subQuery3->where('pe_ratio', '>=', request()->minPe*100000);
                     }
                 })
-                ->orWhere(function ($subQuery4) {
+                ->where(function ($subQuery4) {
                     if (request()->sector != "all") {
                         $subQuery4->where('sector', request()->sector);
 

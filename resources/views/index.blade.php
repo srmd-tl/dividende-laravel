@@ -56,7 +56,7 @@
                                  
                                     <input type="text" placeholder="min" name="minMc" value="{{request()->minMc??0}}">
                                     <span>-</span>
-                                    <input type="text" placeholder="max" max="maxMc" value="{{request()->maxMc}}">
+                                    <input type="text" placeholder="max" name="maxMc" value="{{request()->maxMc}}">
                                 
                               </div>
                            </div>
@@ -92,39 +92,39 @@
                               </label>
                               <label class="radioStyle">
                                  <span>Consumer Defensive</span> 
-                              <input type="radio"  name="sector" value="Consumer Defensive">
+                              <input type="radio" {{request()->sector=='Consumer Defensive'?'checked':''}}   name="sector" value="Consumer Defensive">
                               <span class="checkmark"></span>
                               </label>
                               <label class="radioStyle"><span>Consumer Cyclical</span> 
-                              <input type="radio"  name="sector" value="Consumer Cyclical">
+                              <input type="radio"  {{request()->sector=='Consumer Cyclical'?'checked':''}}   name="sector" value="Consumer Cyclical">
                               <span class="checkmark"></span>
                               </label>
                               <label class="radioStyle"><span>Financial Services</span> 
-                              <input type="radio"  name="sector" value="Financial Services">
+                              <input type="radio"  {{request()->sector=='Financial Services'?'checked':''}}  name="sector" value="Financial Services">
                               <span class="checkmark"></span>
                               </label>
                               <label class="radioStyle"><span>Healthcare</span> 
-                              <input type="radio"  name="sector" value="Healthcare">
+                              <input type="radio"  {{request()->sector=='Healthcare'?'checked':''}}  name="sector" value="Healthcare">
                               <span class="checkmark"></span>
                               </label>
                               <label class="radioStyle"><span>Real Estate</span> 
-                              <input type="radio"  name="sector" value="Real Estate">
+                              <input type="radio"  {{request()->sector=='Real Estate'?'checked':''}}  name="sector" value="Real Estate">
                               <span class="checkmark"></span>
                               </label>
                               <label class="radioStyle"><span>Energy</span> 
-                              <input type="radio"  name="sector" value="Energy">
+                              <input type="radio"  {{request()->sector=='Energy'?'checked':''}}  name="sector" value="Energy">
                               <span class="checkmark"></span>
                               </label>    
                               <label class="radioStyle"><span>Basic Materials</span> 
-                              <input type="radio"  name="sector" value="Basic Materials">
+                              <input type="radio"  {{request()->sector=='Basic Materials'?'checked':''}}  name="sector" value="Basic Materials">
                               <span class="checkmark"></span>
                               </label>
                               <label class="radioStyle"><span>Industrials</span> 
-                              <input type="radio"  name="sector" value="Industrials">
+                              <input type="radio"  {{request()->sector=='Industrials'?'checked':''}}  name="sector" value="Industrials">
                               <span class="checkmark"></span>
                               </label> 
                               <label class="radioStyle"><span>Other</span> 
-                              <input type="radio"  name="sector" value="Other">
+                              <input type="radio"  {{request()->sector=='Other'?'checked':''}}  name="sector" value="Other">
                               <span class="checkmark"></span>
                               </label>
                            <div class="market country_select">
@@ -248,18 +248,13 @@
             /*End Country Filter*/
 
             /*On chage Min  Market Cap filter*/
-            $("input[name='minMc']").change(function(){
+            $("input[name='minMc'],input[name='maxMc'],input[name='maxPe'],input[name='minPe'],input[name='minDy'],input[name='maxDy'],input[name='sector'],input[name='country']").change(function(){
 
                $("#filterForm").submit()
 
             });
             /*End On chage Min  Market Cap filter*/
 
-            /*On chage  Max Market Cap filter*/
-            $("input[name='max']").change(function(){
-
-            });
-            /*End On chage  Max Market Cap filter*/
 
 
       
