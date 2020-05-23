@@ -26,15 +26,16 @@ class FundamentalController extends Controller
             $data = $symbolFundamentals->where(function ($subQuery1) {
 
                 if (request()->maxMc) {
-                    $subQuery1->where('market_cap', '>=', request()->minMc*100000)
-                        ->where('market_cap', '<=', request()->maxMc*100000);
+                    $subQuery1->where('market_cap', '>=', request()->minMc*1000000)
+                        ->where('market_cap', '<=', request()->maxMc*1000000);
                 } else {
-                    $subQuery1->where('market_cap', '>=', request()->minMc*100000);
+                    $subQuery1->where('market_cap', '>=', request()->minMc*1000000);
                 }
 
             })
                 ->where(function ($subQuery2) {
                     if (request()->maxDy) {
+                        dd('ere');
                         $subQuery2->where('dividend_yield', '>=', request()->minDy/100)
                             ->where('dividend_yield', '<=', request()->maxDy/100);
                     } else {
