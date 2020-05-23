@@ -14,6 +14,8 @@ class FundamentalController extends Controller
      */
     public function index()
     {
+
+       
         $data;
         $country            = request()->country ?? 'France';
         $symbolFundamentals = Fundamental::whereHas('symbol', function ($query) use ($country) {
@@ -32,7 +34,7 @@ class FundamentalController extends Controller
 
             })
                 ->where(function ($subQuery2) {
-                    if (request()->maxMc) {
+                    if (request()->maxDy) {
                         $subQuery2->where('dividend_yield', '>=', request()->minDy/100)
                             ->where('dividend_yield', '<=', request()->maxDy/100);
                     } else {
@@ -41,7 +43,7 @@ class FundamentalController extends Controller
                     }
                 })
                 ->where(function ($subQuery3) {
-                    if (request()->maxMc) {
+                    if (request()->maxPe) {
                         $subQuery3->where('pe_ratio', '>=', request()->minPe)
                             ->where('pe_ratio', '<=', request()->maxPe);
                     } else {
