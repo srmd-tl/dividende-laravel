@@ -238,6 +238,7 @@ input[type="text"]:focus {
 
 .radioStyle span {
     margin: 0px 4px;
+    font-weight: 400;
 }
 
 
@@ -592,9 +593,16 @@ overflow: hidden;
 text-overflow: ellipsis;
 }
 
+.market.country_select h2 {
+    font-size: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+}
 
-
-
+.page-link {
+      padding: 13px 16px !important;
+}
 
 
 
