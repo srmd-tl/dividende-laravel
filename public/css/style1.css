@@ -580,7 +580,17 @@ input[type="text"]:focus {
 
 
 
-
+.table-recponsives .companyInfo p {
+margin: 0;
+font-size: 16px;
+color: #000;
+display: -webkit-box;
+max-width: 200px;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;
+}
 
 
 
