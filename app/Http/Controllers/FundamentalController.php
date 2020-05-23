@@ -25,7 +25,7 @@ class FundamentalController extends Controller
 
                 if (request()->maxMc) {
                     $subQuery1->where('market_cap', '>=', request()->minMc*100000)
-                        ->where('market_cap', '<=', request()->maxMc*100000);
+                        ->where('market_cap',  request()->maxMc*100000);
                 } else {
                     $subQuery1->where('market_cap', '>=', request()->minMc*100000);
                 }
@@ -34,7 +34,7 @@ class FundamentalController extends Controller
                 ->where(function ($subQuery2) {
                     if (request()->maxMc) {
                         $subQuery2->where('dividend_yield', '>=', request()->minDy/100)
-                            ->where('dividend_yield', '<=', request()->maxDy/100);
+                            ->where('dividend_yield', request()->maxDy/100);
                     } else {
 
                         $subQuery2->where('dividend_yield', '>=', request()->minDy/100);
@@ -43,7 +43,7 @@ class FundamentalController extends Controller
                 ->where(function ($subQuery3) {
                     if (request()->maxMc) {
                         $subQuery3->where('pe_ratio', '>=', request()->minPe)
-                            ->where('pe_ratio', '<=', request()->maxPe);
+                            ->where('pe_ratio',request()->maxPe);
                     } else {
                         $subQuery3->where('pe_ratio', '>=', request()->minPe);
                     }
