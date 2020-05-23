@@ -54,27 +54,27 @@
                               <h2>market capitalization</h2>
                               <div class="market-form">
                                  
-                                    <input type="text" placeholder="min" min="0" name="minMc" value="{{request()->minMc??0}}">
+                                    <input class="text-center" type="text" placeholder="min" min="0" name="minMc" value="{{request()->minMc??0}}">
                                     <span>-</span>
-                                    <input type="text" placeholder="max" name="maxMc" value="{{request()->maxMc}}">
+                                    <input class="text-center" type="text" placeholder="max" name="maxMc" value="{{request()->maxMc}}">
                                 
                               </div>
                            </div>
                            <div class="market">
                               <h2>P/E radio</h2>
                               <div class="market-form">
-                                      <input type="text" placeholder="min" min="0" name="minPe" value="{{request()->minPe??0}}">
+                                      <input class="text-center" type="text" placeholder="min" min="0" name="minPe" value="{{request()->minPe??0}}">
                                     <span>-</span>
-                                    <input type="text"  placeholder="max" name="maxPe" value="{{request()->maxPe}}">
+                                    <input class="text-center" type="text"  placeholder="max" name="maxPe" value="{{request()->maxPe}}">
                                    
                               </div>
                            </div>
                            <div class="market">
                               <h2>Diviend Yield (%)</h2>
                               <div class="market-form">
-                                  <input type="text" placeholder="min" min="0" name="minDy"  value="{{request()->minDy??0}}">
+                                  <input class="text-center" type="text" placeholder="min" min="0" name="minDy"  value="{{request()->minDy??0}}">
                                     <span>-</span>
-                                    <input type="text"  placeholder="max" name="maxDy"  value="{{request()->maxDy}}">
+                                    <input class="text-center" type="text"  placeholder="max" name="maxDy"  value="{{request()->maxDy}}">
                                
                               </div>
                            </div>
@@ -158,10 +158,10 @@
                <div id="content" >
                   <div class="content_title">
                     <h3>Results <span>{{$symbolFundamentals->total()}} total</span></h3>
-                    <div class="button_nxt_pre">
+                    <!-- <div class="button_nxt_pre">
                       <a href="#">Preview</a>
                       <a href="#">Next</a>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="table-recponsives">
                      <table>
