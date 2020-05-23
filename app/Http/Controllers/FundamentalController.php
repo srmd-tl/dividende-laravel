@@ -44,11 +44,12 @@ class FundamentalController extends Controller
                     }
                 })
                 ->where(function ($subQuery3) {
+
                     if (request()->maxPe) {
                         $subQuery3->where('pe_ratio', '>=', floatval(request()->minPe))
                             ->where('pe_ratio', '<=', floatval(request()->maxPe));
                     } else {
-                        $subQuery3->where('pe_ratio', '>=', request()->minPe);
+                        $subQuery3->where('pe_ratio', '>=', floatval(request()->minPe));
                     }
                 })
                 ->where(function ($subQuery4) {
