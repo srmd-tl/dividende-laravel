@@ -33,19 +33,19 @@ class FundamentalController extends Controller
             })
                 ->where(function ($subQuery2) {
                     if (request()->maxMc) {
-                        $subQuery2->where('dividend_yield', '>=', request()->minDy*100000)
-                            ->where('dividend_yield', '<=', request()->maxDy*100000);
+                        $subQuery2->where('dividend_yield', '>=', request()->minDy)
+                            ->where('dividend_yield', '<=', request()->maxDy);
                     } else {
 
-                        $subQuery2->where('dividend_yield', '>=', request()->minDy*100000);
+                        $subQuery2->where('dividend_yield', '>=', request()->minDy);
                     }
                 })
                 ->where(function ($subQuery3) {
                     if (request()->maxMc) {
-                        $subQuery3->where('pe_ratio', '>=', request()->minPe*100000)
-                            ->where('pe_ratio', '<=', request()->maxPe*100000);
+                        $subQuery3->where('pe_ratio', '>=', request()->minPe)
+                            ->where('pe_ratio', '<=', request()->maxPe);
                     } else {
-                        $subQuery3->where('pe_ratio', '>=', request()->minPe*100000);
+                        $subQuery3->where('pe_ratio', '>=', request()->minPe);
                     }
                 })
                 ->where(function ($subQuery4) {

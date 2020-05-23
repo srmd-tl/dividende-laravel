@@ -16,7 +16,7 @@
          <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
               
-               <a class="navbar-brand" href="#"><img src="{{asset('images/logo.png')}}" alt=""></a>
+               <a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('images/logo.png')}}" alt=""></a>
                <button type="button" id="sidebarCollapse" class="btn btn-primary">
                <i class="fa fa-bars"></i>
                <span class="sr-only">Toggle Menu</span>
