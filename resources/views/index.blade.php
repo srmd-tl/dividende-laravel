@@ -82,7 +82,7 @@
 
                               <label class="radioStyle">
                                  <span>All</span>
-                                    <span class="countar">{{$symbolFundamentals->total()}}</span>
+                                    <span class="countar">{{$totalCount}}</span>
                               <input type="radio" checked="checked" name="sector" value="all">
 
                               
@@ -145,10 +145,10 @@
                               <th class="cell100 column1">
                                  Name
                               </th>
-                              <th class="column3"><a href="{{route('index',['mcOrder'=>request()->mcOrder=='down'?'up':'down','dyOrder'=>request()->dyOrder=='down'?'up':'down','peOrder'=>request()->peOrder=='down'?'up':'down'])}}">
+                              <th class="column3"><a href="{{route('index',['mcOrder'=>request()->mcOrder=='up'?'down':'up'])}}">
 
 
-                                 <i class="fa fa-caret-{{request()->mcOrder=='down'?'down':'up'}}" aria-hidden="true"></i>
+                                 <i class="fa fa-caret-{{request()->mcOrder=='up'?'up':'down'}}" aria-hidden="true"></i>
 
 
                                   Market Cap
@@ -157,14 +157,25 @@
                               </th>
 
 
-                              <th class="column3"><a href="{{route('index',['mcOrder'=>request()->mcOrder=='down'?'up':'down','dyOrder'=>request()->dyOrder=='down'?'up':'down','peOrder'=>request()->peOrder=='down'?'up':'down'])}}" aria-hidden="true"></i> Div. Yield</a></th>
+                              <th class="column3"><a href="{{route('index',['dyOrder'=>request()->dyOrder=='up'?'down':'up'])}}">
+
+
+                              <i class="fa fa-caret-{{request()->dyOrder=='up'?'up':'down'}}" aria-hidden="true"></i>
+                                  Div. Yield
+
+                           </a></th>
 
 
                               <th class="column4">Price History</th>
                               <!-- <th class="column5 color1">1Y 2Y 3Y</th> -->
 
 
-                              <th class="column3"><a href="{{route('index',['mcOrder'=>request()->mcOrder=='down'?'up':'down','dyOrder'=>request()->dyOrder=='down'?'up':'down','peOrder'=>request()->peOrder=='down'?'up':'down'])}}" aria-hidden="true"></i>P/E Radio</a></th>
+                              <th class="column3"><a href="{{route('index',['peOrder'=>request()->peOrder=='up'?'down':'up'])}}" aria-hidden="true">
+
+
+                             <i class="fa fa-caret-{{request()->peOrder=='up'?'up':'down'}}" aria-hidden="true"></i>
+
+                           P/E Radio</a></th>
                            </tr>
                            @forelse($symbolFundamentals as $fundamental)
 

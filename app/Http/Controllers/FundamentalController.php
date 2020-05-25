@@ -14,28 +14,31 @@ class FundamentalController extends Controller
      */
     public function index()
     {
-        $sectorsAndCount = Fundamental::groupBy('sector')->selectRaw('sector,count(*) as count')->get();
-
-        $data;
+        $excludedServices   = ["Conglomerates", "Consumer Goods", "Services"];
         $country            = request()->country ?? 'France';
         $symbolFundamentals = Fundamental::whereHas('symbol', function ($query) use ($country) {
             return $query->whereCountry($country);
-        });
+        })->whereNotIn('sector', $excludedServices);
+        $sectorsAndCount = $symbolFundamentals->groupBy('sector')->selectRaw('sector,count(*) as count')->get();
+        $totalCount      = $symbolFundamentals->count();
+        $mcOrder         = request()->mcOrder == 'up' ? 'asc' : 'desc';
+        $dyOrder         = request()->dyOrder == 'up' ? 'asc' : 'desc';
+        $peOrder         = request()->peOrder == 'up' ? 'asc' : 'desc';
+        if (request()->mcOrder) {
+            $symbolFundamentals = $symbolFundamentals
+                ->orderBy('market_cap', $mcOrder);
+        } elseif (request()->dyOrder) {
+            $symbolFundamentals = $symbolFundamentals
+                ->orderBy('dividend_yield', $dyOrder);
+        } else {
 
-        if (request()->mcOrder || request()->dyOrder || request()->peOrder) {
-            $symbolFundamentals = $symbolFundamentals->where(function ($subQuery5) {
+            $symbolFundamentals = $symbolFundamentals
 
-                $mcOrder = request()->mcOrder == 'down' ? 'desc' : 'asc';
-                $dyOrder = request()->dyOrder == 'down' ? 'desc' : 'asc';
-                $peOrder = request()->peOrder == 'down' ? 'desc' : 'asc';
-
-                $subQuery5
-                    ->orderBy('market_cap', $mcOrder)
-                    ->orderBy('dividend_yield', $dyOrder)
-                    ->orderBy('pe_ratio', $peOrder);
-
-            });
+                ->orderBy('pe_ratio', $peOrder);
         }
+
+        // dd( $symbolFundamentals->first());
+
         if (request()->minMc || request()->maxMc || request()->minPe || request()->maxPe || request()->minDy || request()->maxDy || request()->sector) {
 
             $symbolFundamentals = $symbolFundamentals->where(function ($subQuery1) {
@@ -72,19 +75,8 @@ class FundamentalController extends Controller
                         $subQuery4->where('sector', request()->sector);
 
                     }
-                })
-                ->where(function ($subQuery5) {
-                    $mcOrder = request()->mcOrder == 'down' ? 'desc' : 'asc';
-                    $dyOrder = request()->dyOrder == 'down' ? 'desc' : 'asc';
-                    $peOrder = request()->peOrder == 'down' ? 'desc' : 'asc';
-
-                    $subQuery5
-                        ->orderBy('market_cap', $mcOrder)
-                        ->orderBy('dividend_yield', $dyOrder)
-                        ->orderBy('pe_ratio', $peOrder);
-
                 });
-            
+
         }
 
         // ->when(request()->minMc || request()->maxMc, function ($query) {
@@ -116,13 +108,11 @@ class FundamentalController extends Controller
 
         //     ;
         // })
-        
 
-        
         // $symbolFundamentals = Fundamental::with(['symbol'=>function($query) use ($country){
         //     return $query->whereCountry($country);
         // }])->paginate(20);
-        return view('index', ['symbolFundamentals' => $symbolFundamentals->paginate(20), "sectorsAndCount" => $sectorsAndCount]);
+        return view('index', ['symbolFundamentals' => $symbolFundamentals->paginate(20), "sectorsAndCount" => $sectorsAndCount, "totalCount" => $totalCount]);
     }
 
     /**
