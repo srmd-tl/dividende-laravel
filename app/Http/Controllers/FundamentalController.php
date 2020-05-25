@@ -14,16 +14,18 @@ class FundamentalController extends Controller
      */
     public function index()
     {
-        $excludedServices   = ["Conglomerates", "Consumer Goods", "Services"];
+        $excludedServices   = ["Conglomerates", "Consumer Goods", "Services",""];
         $country            = request()->country ?? 'France';
         $symbolFundamentals = Fundamental::whereHas('symbol', function ($query) use ($country) {
             return $query->whereCountry($country);
         })->whereNotIn('sector', $excludedServices);
-        $sectorsAndCount = $symbolFundamentals->groupBy('sector')->selectRaw('sector,count(*) as count')->get();
+
+        $sectorsAndCount = (clone $symbolFundamentals)->groupBy('sector')->selectRaw('sector,count(*) as count')->get();
         $totalCount      = $symbolFundamentals->count();
         $mcOrder         = request()->mcOrder == 'up' ? 'asc' : 'desc';
         $dyOrder         = request()->dyOrder == 'up' ? 'asc' : 'desc';
         $peOrder         = request()->peOrder == 'up' ? 'asc' : 'desc';
+
         if (request()->mcOrder) {
             $symbolFundamentals = $symbolFundamentals
                 ->orderBy('market_cap', $mcOrder);
@@ -79,40 +81,7 @@ class FundamentalController extends Controller
 
         }
 
-        // ->when(request()->minMc || request()->maxMc, function ($query) {
-        // return $query->where(function ($sub) {
-        //     if (request()->maxMc) {
-        //          $sub->where('market_cap', ' >= ', request()->minMc)
-        //             ->where('market_cap', ' <= ', request()->maxMc);
-        //     } else {
-        //          $sub->where('market_cap', ' >= ', request()->minMc);
-        //     }
-
-        // })
-        // ->orWhere( function ($sub2) {
-        //     if (request()->maxMc) {
-        //          $sub2->where('dividend_yield', ' >= ', request()->minDy)
-        //             ->where('dividend_yield', ' <= ', request()->maxDy);
-        //     } else {
-        //          $sub2->where('dividend_yield', ' >= ', request()->minDy);
-        //     }
-        // })
-        //  ->orWhere( function ($sub3) {
-        //     if (request()->maxMc) {
-        //          $sub3->where('pe_ratio', ' >= ', request()->minPe)
-        //             ->where('pe_ratio', ' <= ', request()->maxPe);
-        //     } else {
-        //          $sub3->where('pe_ratio', ' >= ', request()->minPe);
-        //     }
-        // })
-
-        //     ;
-        // })
-
-        // $symbolFundamentals = Fundamental::with(['symbol'=>function($query) use ($country){
-        //     return $query->whereCountry($country);
-        // }])->paginate(20);
-        return view('index', ['symbolFundamentals' => $symbolFundamentals->paginate(20), "sectorsAndCount" => $sectorsAndCount, "totalCount" => $totalCount]);
+        return view('index', ['symbolFundamentals' => $symbolFundamentals->paginate(20), "sectorsAndCount" => $sectorsAndCount ?? null, "totalCount" => $totalCount]);
     }
 
     /**
