@@ -81,64 +81,29 @@
                               <h2>Sector</h2>
 
                               <label class="radioStyle">
-                                 <span>All</span> 
+                                 <span>All</span>
+                                    <span class="countar">{{$totalCount}}</span>
                               <input type="radio" checked="checked" name="sector" value="all">
+
+                              
                               <span class="checkmark"></span>
                               </label>
+                              @forelse($sectorsAndCount as $sector)
                               <label class="radioStyle">
-                                 <span>Consumer Defensive</span> 
-                                 <span class="countar">20</span>
-                              <input type="radio" {{request()->sector=='Consumer Defensive'?'checked':''}}   name="sector" value="Consumer Defensive">
+                                 <span>{{$sector->sector}}</span> 
+                                 <span class="countar">{{$sector->count}}</span>
+                              <input type="radio" {{request()->sector==$sector->sector ?'checked':''}}   name="sector" value="{{$sector->sector}}">
                               <span class="checkmark"></span>
                               </label>
-                              <label class="radioStyle">
-                                 <span>Consumer Cyclical</span>
-                                 <span class="countar">20</span>
-                              <input type="radio"  {{request()->sector=='Consumer Cyclical'?'checked':''}}   name="sector" value="Consumer Cyclical">
-                              <span class="checkmark"></span>
-                              </label>
-                              <label class="radioStyle">
-                                 <span>Financial Services</span>
-                                 <span class="countar">20</span> 
-                              <input type="radio"  {{request()->sector=='Financial Services'?'checked':''}}  name="sector" value="Financial Services">
-                              <span class="checkmark"></span>
-                              </label>
-                              <label class="radioStyle">
-                                 <span>Healthcare</span>
-                                 <span class="countar">20</span> 
-                              <input type="radio"  {{request()->sector=='Healthcare'?'checked':''}}  name="sector" value="Healthcare">
-                              <span class="checkmark"></span>
-                              </label>
-                              <label class="radioStyle">
-                                 <span>Real Estate</span>
-                                 <span class="countar">20</span> 
-                              <input type="radio"  {{request()->sector=='Real Estate'?'checked':''}}  name="sector" value="Real Estate">
-                              <span class="checkmark"></span>
-                              </label>
-                              <label class="radioStyle">
-                                 <span>Energy</span> 
-                                 <span class="countar">20</span>
-                              <input type="radio"  {{request()->sector=='Energy'?'checked':''}}  name="sector" value="Energy">
-                              <span class="checkmark"></span>
-                              </label>    
-                              <label class="radioStyle">
-                                 <span>Basic Materials</span>
-                                 <span class="countar">20</span> 
-                              <input type="radio"  {{request()->sector=='Basic Materials'?'checked':''}}  name="sector" value="Basic Materials">
-                              <span class="checkmark"></span>
-                              </label>
-                              <label class="radioStyle">
-                                 <span>Industrials</span>
-                                 <span class="countar">20</span> 
-                              <input type="radio"  {{request()->sector=='Industrials'?'checked':''}}  name="sector" value="Industrials">
-                              <span class="checkmark"></span>
-                              </label> 
-                              <label class="radioStyle">
+                              @empty
+                              @endforelse
+                              
+                            <!--   <label class="radioStyle">
                                  <span>Other</span> 
                                  <span class="countar">20</span>
                               <input type="radio"  {{request()->sector=='Other'?'checked':''}}  name="sector" value="Other">
                               <span class="checkmark"></span>
-                              </label>
+                              </label> -->
                            <div class="market country_select">
                               <h2>Country</h2>
                            <!-- <form action="{{route('index')}}" class="market" method="GET" id="countryForm"> -->
@@ -180,11 +145,37 @@
                               <th class="cell100 column1">
                                  Name
                               </th>
-                              <th class="column2">Market Cap</th>
-                              <th class="column3"><i class="fa fa-caret-down" aria-hidden="true"></i> Div. Yield</th>
+                              <th class="column3"><a href="{{route('index',['mcOrder'=>request()->mcOrder=='up'?'down':'up'])}}">
+
+
+                                 <i class="fa fa-caret-{{request()->mcOrder=='up'?'up':'down'}}" aria-hidden="true"></i>
+
+
+                                  Market Cap
+
+                                 </a>
+                              </th>
+
+
+                              <th class="column3"><a href="{{route('index',['dyOrder'=>request()->dyOrder=='up'?'down':'up'])}}">
+
+
+                              <i class="fa fa-caret-{{request()->dyOrder=='up'?'up':'down'}}" aria-hidden="true"></i>
+                                  Div. Yield
+
+                           </a></th>
+
+
                               <th class="column4">Price History</th>
                               <!-- <th class="column5 color1">1Y 2Y 3Y</th> -->
-                              <th class="column6">P/E Radio</th>
+
+
+                              <th class="column3"><a href="{{route('index',['peOrder'=>request()->peOrder=='up'?'down':'up'])}}" aria-hidden="true">
+
+
+                             <i class="fa fa-caret-{{request()->peOrder=='up'?'up':'down'}}" aria-hidden="true"></i>
+
+                           P/E Radio</a></th>
                            </tr>
                            @forelse($symbolFundamentals as $fundamental)
 
@@ -215,13 +206,13 @@
                               <td class="column6">
                                  <div class="">
                                     <span>{{$fundamental->pe_ratio}}</span>
-                                    <div class="dots_color">
+                                  <!--   <div class="dots_color">
                                        <i class="fa fa-circle check-color" aria-hidden="true"></i>
                                        <i class="fa fa-circle check-color" aria-hidden="true"></i>
                                        <i class="fa fa-circle check-color" aria-hidden="true"></i>
                                        <i class="fa fa-circle check-color" aria-hidden="true"></i>
                                        <i class="fa fa-circle" aria-hidden="true"></i>
-                                    </div>
+                                    </div> -->
                                  </div>
                               </td>
                            </tr> 
