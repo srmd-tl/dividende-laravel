@@ -20,8 +20,7 @@ class FundamentalController extends Controller
             return $query->whereCountry($country);
         })->whereNotIn('sector', $excludedServices);
 
-        $sectorsAndCount = (clone $symbolFundamentals)->groupBy('sector')->selectRaw('sector,count(*) as count')->get();
-        $totalCount      = $symbolFundamentals->count();
+    
         $mcOrder         = request()->mcOrder == 'up' ? 'asc' : 'desc';
         $dyOrder         = request()->dyOrder == 'up' ? 'asc' : 'desc';
         $peOrder         = request()->peOrder == 'up' ? 'asc' : 'desc';
@@ -75,15 +74,23 @@ class FundamentalController extends Controller
                         $subQuery3->where('pe_ratio', '>=', floatval(request()->minPe));
                     }
                 })
-                ->where(function ($subQuery4) {
-                    if (request()->sector != "all") {
-                        $subQuery4->where('sector', request()->sector);
+                // ->where(function ($subQuery4) {
+                    
+                //     if (request()->sector != "all") {
+                //         $subQuery4->where('sector', request()->sector);
 
-                    }
-                });
+                //     }
+                // })
+                ;
 
         }
+        $sectorsAndCount = (clone $symbolFundamentals)->groupBy('sector')->selectRaw('sector,count(*) as count')->get();
+        $totalCount      =(clone  $symbolFundamentals)->count();
+        
+          if (request()->sector != "all") {
+                        $symbolFundamentals->where('sector', request()->sector);
 
+                    }
         return view('index', ['symbolFundamentals' => $symbolFundamentals->paginate(20), "sectorsAndCount" => $sectorsAndCount ?? null, "totalCount" => $totalCount]);
     }
 
