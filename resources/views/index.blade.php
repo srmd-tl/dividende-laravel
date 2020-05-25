@@ -80,52 +80,62 @@
                            </div>
                               <h2>Sector</h2>
 
-
-
-
-
-
-
-
-
-                              <label class="radioStyle"><span>All</span> 
+                              <label class="radioStyle">
+                                 <span>All</span> 
                               <input type="radio" checked="checked" name="sector" value="all">
                               <span class="checkmark"></span>
                               </label>
                               <label class="radioStyle">
                                  <span>Consumer Defensive</span> 
+                                 <span class="countar">20</span>
                               <input type="radio" {{request()->sector=='Consumer Defensive'?'checked':''}}   name="sector" value="Consumer Defensive">
                               <span class="checkmark"></span>
                               </label>
-                              <label class="radioStyle"><span>Consumer Cyclical</span> 
+                              <label class="radioStyle">
+                                 <span>Consumer Cyclical</span>
+                                 <span class="countar">20</span>
                               <input type="radio"  {{request()->sector=='Consumer Cyclical'?'checked':''}}   name="sector" value="Consumer Cyclical">
                               <span class="checkmark"></span>
                               </label>
-                              <label class="radioStyle"><span>Financial Services</span> 
+                              <label class="radioStyle">
+                                 <span>Financial Services</span>
+                                 <span class="countar">20</span> 
                               <input type="radio"  {{request()->sector=='Financial Services'?'checked':''}}  name="sector" value="Financial Services">
                               <span class="checkmark"></span>
                               </label>
-                              <label class="radioStyle"><span>Healthcare</span> 
+                              <label class="radioStyle">
+                                 <span>Healthcare</span>
+                                 <span class="countar">20</span> 
                               <input type="radio"  {{request()->sector=='Healthcare'?'checked':''}}  name="sector" value="Healthcare">
                               <span class="checkmark"></span>
                               </label>
-                              <label class="radioStyle"><span>Real Estate</span> 
+                              <label class="radioStyle">
+                                 <span>Real Estate</span>
+                                 <span class="countar">20</span> 
                               <input type="radio"  {{request()->sector=='Real Estate'?'checked':''}}  name="sector" value="Real Estate">
                               <span class="checkmark"></span>
                               </label>
-                              <label class="radioStyle"><span>Energy</span> 
+                              <label class="radioStyle">
+                                 <span>Energy</span> 
+                                 <span class="countar">20</span>
                               <input type="radio"  {{request()->sector=='Energy'?'checked':''}}  name="sector" value="Energy">
                               <span class="checkmark"></span>
                               </label>    
-                              <label class="radioStyle"><span>Basic Materials</span> 
+                              <label class="radioStyle">
+                                 <span>Basic Materials</span>
+                                 <span class="countar">20</span> 
                               <input type="radio"  {{request()->sector=='Basic Materials'?'checked':''}}  name="sector" value="Basic Materials">
                               <span class="checkmark"></span>
                               </label>
-                              <label class="radioStyle"><span>Industrials</span> 
+                              <label class="radioStyle">
+                                 <span>Industrials</span>
+                                 <span class="countar">20</span> 
                               <input type="radio"  {{request()->sector=='Industrials'?'checked':''}}  name="sector" value="Industrials">
                               <span class="checkmark"></span>
                               </label> 
-                              <label class="radioStyle"><span>Other</span> 
+                              <label class="radioStyle">
+                                 <span>Other</span> 
+                                 <span class="countar">20</span>
                               <input type="radio"  {{request()->sector=='Other'?'checked':''}}  name="sector" value="Other">
                               <span class="checkmark"></span>
                               </label>
