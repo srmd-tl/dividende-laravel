@@ -41,7 +41,7 @@
           <div class="search_for_mobile">
             <div class="findUser">
                  <form method="GET" action="{{route('index')}}">
-                    <input type="text" placeholder="Search" name="tickerOrName">
+                    <input type="text" placeholder="Search" name="tickerOrName" value="">
                     <button type="submit" class="serch_btn"><i class="fa fa-search" aria-hidden="true"></i></button>
                  </form>
               </div>
