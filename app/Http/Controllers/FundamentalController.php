@@ -14,7 +14,7 @@ class FundamentalController extends Controller
      */
     public function index()
     {
-        $excludedServices   = ["Conglomerates", "Consumer Goods", "Services",""];
+        $excludedServices   = ["Conglomerates", "Consumer Goods", "Services","Financial","Industrial Goods",""];
         $country            = request()->country ?? 'France';
         $symbolFundamentals = Fundamental::whereHas('symbol', function ($query) use ($country) {
             return $query->whereCountry($country);
