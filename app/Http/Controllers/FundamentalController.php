@@ -17,12 +17,17 @@ class FundamentalController extends Controller
         $excludedServices   = ["Conglomerates", "Consumer Goods", "Services", "Financial", "Industrial Goods", ""];
         $country            = request()->country ?? 'France';
         $symbolFundamentals = Fundamental::whereHas('symbol', function ($query) use ($country) {
-            if(request()->tickerOrName)
+               if(request()->tickerOrName)
             {
-                $query->where('Name',request()->tickerOrName)
+                return $query->whereCountry($country)
+                ->where('Name',request()->tickerOrName)
                     ->orWhere('Code',request()->tickerOrName);
             }
-            return $query->whereCountry($country);
+            else
+            {
+                return $query->whereCountry($country);
+
+            }
         })->whereNotIn('sector', $excludedServices);
 
     
@@ -81,13 +86,16 @@ class FundamentalController extends Controller
                 });
 
         }
+        
+   
         $sectorsAndCount = (clone $symbolFundamentals)->groupBy('sector')->selectRaw('sector,count(*) as count')->get();
         $totalCount      =(clone  $symbolFundamentals)->count();
-        
-        if (request()->sector != "all") {
+          
+        if (request()->sector != "all" && isset(request()->sector)) {
                     $symbolFundamentals->where('sector', request()->sector);
 
                 }
+            
         return view('index', ['symbolFundamentals' => $symbolFundamentals->paginate(20), "sectorsAndCount" => $sectorsAndCount ?? null, "totalCount" => $totalCount]);
     }
 
