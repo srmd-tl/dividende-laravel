@@ -134,7 +134,7 @@
                <!-- Page Content  -->
                <div id="content" >
                   <div class="content_title">
-                    <h3>Results <span>{{$totalCount}} total</span></h3>
+                    <h3>Results <span>{{$symbolFundamentals->total()}} total</span></h3>
                     <!-- <div class="button_nxt_pre">
                       <a href="#">Preview</a>
                       <a href="#">Next</a>

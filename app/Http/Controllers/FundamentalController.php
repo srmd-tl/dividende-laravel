@@ -14,7 +14,7 @@ class FundamentalController extends Controller
      */
     public function index()
     {
-        $excludedServices   = ["Conglomerates", "Consumer Goods", "Services","Financial","Industrial Goods",""];
+        $excludedServices   = ["Conglomerates", "Consumer Goods", "Services", "Financial", "Industrial Goods", ""];
         $country            = request()->country ?? 'France';
         $symbolFundamentals = Fundamental::whereHas('symbol', function ($query) use ($country) {
             return $query->whereCountry($country);
@@ -32,11 +32,14 @@ class FundamentalController extends Controller
         } elseif (request()->dyOrder) {
             $symbolFundamentals = $symbolFundamentals
                 ->orderBy('dividend_yield', $dyOrder);
-        } else {
+        } elseif (request()->peOrder) {
 
             $symbolFundamentals = $symbolFundamentals
 
                 ->orderBy('pe_ratio', $peOrder);
+        } else {
+            $symbolFundamentals = $symbolFundamentals
+                ->orderBy('market_cap', $mcOrder);
         }
 
         // dd( $symbolFundamentals->first());
