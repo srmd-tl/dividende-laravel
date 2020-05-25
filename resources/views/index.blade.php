@@ -9,6 +9,8 @@
       <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="{{asset('css/style.css')}}">
       <link rel="stylesheet" type="text/css" href="{{asset('css/style1.css')}}">
+      <link rel="shortcut icon" type="image/png" href="{{asset('images/favicon.png')}}"/>
+
    </head>
    <body>
       <!-- ===================== top nabvar // start =========================== -->
