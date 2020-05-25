@@ -84,7 +84,7 @@
 
                               <label class="radioStyle">
                                  <span>All</span>
-                                    <span class="countar">{{$totalCount}}</span>
+                                    <span class="countar">{{$symbolFundamentals->total()}}</span>
                               <input type="radio" checked="checked" name="sector" value="all">
 
                               
