@@ -194,7 +194,7 @@
                                        
                                        <div class="companyInfo">
                                           <h4>{{$fundamental->symbol->Code}}</h4>
-                                          <p class="add-three-dots">{{$fundamental->symbol->Name}}</p>
+                                          <p class="add-three-dots">{{Str::of($fundamental->symbol->Name)->limit(25)}}</p>
                                        </div>
                                     </div>
                                  </form>
