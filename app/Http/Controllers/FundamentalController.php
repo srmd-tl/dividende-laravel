@@ -14,32 +14,27 @@ class FundamentalController extends Controller
      */
     public function index()
     {
-        $excludedServices = ["Conglomerates", "Consumer Goods", "Services", "Financial", "Industrial Goods", ""];
-        if (request()->tickerOrName) {
-            $symbolFundamentals = Fundamental::
-                whereNotIn('sector', $excludedServices)
-                ->where(function ($query) {
-                    $query->where('Name', 'like', '%' . request()->tickerOrName . '%')
-
-                        ->orWhere('Code', request()->tickerOrName);
-                });
-
-            $sectorsAndCount = (clone $symbolFundamentals)->groupBy('sector')->selectRaw('sector,count(*) as count')->get();
-            $totalCount      = (clone $symbolFundamentals)->count();
-            return view('index', ['symbolFundamentals' => $symbolFundamentals->paginate(20), "sectorsAndCount" => $sectorsAndCount ?? null, "totalCount" => $totalCount]);
-
-        }
-
+        $excludedServices   = ["Conglomerates", "Consumer Goods", "Services", "Financial", "Industrial Goods", ""];
         $country            = request()->country ?? 'France';
         $symbolFundamentals = Fundamental::whereHas('symbol', function ($query) use ($country) {
+               if(request()->tickerOrName)
+            {
+                $query
+                ->where('Name','like','%'.request()->tickerOrName.'%')
 
-            return $query->whereCountry($country);
+                    ->orWhere('Code',request()->tickerOrName);
+            }
+            else
+            {
+                return $query->whereCountry($country);
 
+            }
         })->whereNotIn('sector', $excludedServices);
 
-        $mcOrder = request()->mcOrder == 'up' ? 'asc' : 'desc';
-        $dyOrder = request()->dyOrder == 'up' ? 'asc' : 'desc';
-        $peOrder = request()->peOrder == 'up' ? 'asc' : 'desc';
+    
+        $mcOrder         = request()->mcOrder == 'up' ? 'asc' : 'desc';
+        $dyOrder         = request()->dyOrder == 'up' ? 'asc' : 'desc';
+        $peOrder         = request()->peOrder == 'up' ? 'asc' : 'desc';
 
         if (request()->mcOrder) {
             $symbolFundamentals = $symbolFundamentals
@@ -92,15 +87,16 @@ class FundamentalController extends Controller
                 });
 
         }
-
+        
+   
         $sectorsAndCount = (clone $symbolFundamentals)->groupBy('sector')->selectRaw('sector,count(*) as count')->get();
-        $totalCount      = (clone $symbolFundamentals)->count();
-
+        $totalCount      =(clone  $symbolFundamentals)->count();
+          
         if (request()->sector != "all" && isset(request()->sector)) {
-            $symbolFundamentals->where('sector', request()->sector);
+                    $symbolFundamentals->where('sector', request()->sector);
 
-        }
-
+                }
+            
         return view('index', ['symbolFundamentals' => $symbolFundamentals->paginate(20), "sectorsAndCount" => $sectorsAndCount ?? null, "totalCount" => $totalCount]);
     }
 
