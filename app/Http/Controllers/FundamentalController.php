@@ -89,7 +89,7 @@ class FundamentalController extends Controller
         }
         
    
-        $sectorsAndCount = (clone $symbolFundamentals)->groupBy('sector')->orderBy('sector','asc')->selectRaw('sector,count(*) as count')->get();
+        $sectorsAndCount = (clone $symbolFundamentals)->groupBy('sector')->selectRaw('sector,count(*) as count')->orderBy('sector','asc')->get();
         $totalCount      =(clone  $symbolFundamentals)->count();
           
         if (request()->sector != "all" && isset(request()->sector)) {
