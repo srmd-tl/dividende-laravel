@@ -19,10 +19,15 @@ class FundamentalController extends Controller
         $symbolFundamentals = Fundamental::whereHas('symbol', function ($query) use ($country) {
             if(request()->tickerOrName)
             {
-                $query->where('Name',request()->tickerOrName)
+                $query->whereCountry($country)
+                ->where('Name','like','%'.request()->tickerOrName.'%')
                     ->orWhere('Code',request()->tickerOrName);
             }
-            return $query->whereCountry($country);
+            else
+            {
+                return $query->whereCountry($country);
+
+            }
         })->whereNotIn('sector', $excludedServices);
 
     
