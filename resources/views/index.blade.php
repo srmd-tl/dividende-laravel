@@ -147,7 +147,15 @@
                               <th class="cell100 column1">
                                  Name
                               </th>
-                              <th class="column3"><a href="{{route('index',['mcOrder'=>request()->mcOrder=='up'?'down':'up','country'=>request()->country,'sector'=>request()->sector])}}">
+                              <th class="column3"><a href="{{route('index',['mcOrder'=>request()->mcOrder=='up'?'down':'up',
+                                'country'=>request()->country,
+                                'sector'=>request()->sector,
+                                minMc=request()->minMc,
+                                maxMc=request()->maxMc,
+                                minPe=request()->minPe,
+                                maxPe=request()->maxPe,
+                                minDy=request()->minDy,
+                                maxDy=request()->maxDy])}}">
 
 
                                  <i class="fa fa-caret-{{request()->mcOrder=='up'?'up':'down'}}" aria-hidden="true"></i>
@@ -159,7 +167,15 @@
                               </th>
 
 
-                              <th class="column3"><a href="{{route('index',['dyOrder'=>request()->dyOrder=='up'?'down':'up','country'=>request()->country,'sector'=>request()->sector])}}">
+                              <th class="column3"><a href="{{route('index',['dyOrder'=>request()->dyOrder=='up'?'down':'up',
+                                'country'=>request()->country,
+                                'sector'=>request()->sector,
+                                minMc=request()->minMc,
+                                maxMc=request()->maxMc,
+                                minPe=request()->minPe,
+                                maxPe=request()->maxPe,
+                                minDy=request()->minDy,
+                                maxDy=request()->maxDy])}}">
 
 
                               <i class="fa fa-caret-{{request()->dyOrder=='up'?'up':'down'}}" aria-hidden="true"></i>
@@ -172,7 +188,15 @@
                               <!-- <th class="column5 color1">1Y 2Y 3Y</th> -->
 
 
-                              <th class="column3"><a href="{{route('index',['peOrder'=>request()->peOrder=='up'?'down':'up','country'=>request()->country,'sector'=>request()->sector])}}" aria-hidden="true">
+                              <th class="column3"><a href="{{route('index',['peOrder'=>request()->peOrder=='up'?'down':'up',
+                                'country'=>request()->country,
+                                'sector'=>request()->sector,
+                                minMc=request()->minMc,
+                                maxMc=request()->maxMc,
+                                minPe=request()->minPe,
+                                maxPe=request()->maxPe,
+                                minDy=request()->minDy,
+                                maxDy=request()->maxDy])}}" aria-hidden="true">
 
 
                              <i class="fa fa-caret-{{request()->peOrder=='up'?'up':'down'}}" aria-hidden="true"></i>
