@@ -21,8 +21,8 @@ class FundamentalController extends Controller
                 ->where(function ($query) {
                     $query->where('Name', 'like', '%' . request()->tickerOrName . '%')
 
-                    ->orWhere('Code', request()->tickerOrName);
-                })
+                        ->orWhere('Code', request()->tickerOrName);
+                });
 
             $sectorsAndCount = (clone $symbolFundamentals)->groupBy('sector')->selectRaw('sector,count(*) as count')->get();
             $totalCount      = (clone $symbolFundamentals)->count();
