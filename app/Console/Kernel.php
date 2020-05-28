@@ -25,9 +25,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('fetch:fundamental')
-            // ->daily();
+            // ->everyMinute();
+            ->daily();
 
-            ->dailyAt('13:00');//1 am
+            // ->dailyAt('13:00');//1 am
+            // ->dailyAt('14:00');//2 pm
     }
 
     /**

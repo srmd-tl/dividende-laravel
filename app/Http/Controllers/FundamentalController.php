@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Fundamental;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class FundamentalController extends Controller
 {
     /**
@@ -16,7 +16,8 @@ class FundamentalController extends Controller
     {
         $excludedServices   = ["Conglomerates", "Consumer Goods", "Services", "Financial", "Industrial Goods", ""];
         $country            = request()->country ?? 'France';
-        $symbolFundamentals = Fundamental::whereHas('symbol', function ($query) use ($country) {
+        $symbolFundamentals = Fundamental::whereDate('created_at', Carbon::today())
+            ->whereHas('symbol', function ($query) use ($country) {
                if(request()->tickerOrName)
             {
                 $query

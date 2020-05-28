@@ -44,7 +44,9 @@ class FetchFundamental extends Command
     {
         $stock   = Eod::stock();
         $symbols = Symbol::whereType('Common Stock')->get();
-        dd($symbols->count());
+        // Log::info('Working!');
+        // Log::info($symbols->count());
+        // dd($symbols->count());
 
         foreach ($symbols as $symbol) {
             try {
