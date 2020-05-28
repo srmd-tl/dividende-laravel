@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\FetchFundamental::class,
+        Commands\RemoveDuplicates::class,
     ];
 
     /**
@@ -25,11 +26,13 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('fetch:fundamental')
-            // ->everyMinute();
+        // ->everyMinute();
             ->daily();
+        $schedule->command('remove:dups')
+            ->everyMinute();
 
-            // ->dailyAt('13:00');//1 am
-            // ->dailyAt('14:00');//2 pm
+        // ->dailyAt('13:00');//1 am
+        // ->dailyAt('14:00');//2 pm
     }
 
     /**
@@ -44,3 +47,7 @@ class Kernel extends ConsoleKernel
         require base_path('routes/console.php');
     }
 }
+
+// * * * * *  php /home/u748339178/domains/dividende.co/public_html/dividende-laravel/artisan schedule:run >> /dev/null 2>&1
+
+// * * * * *  php /home/sarmad/Work/FreelanceWork/PhpProjects/dividende/artisan schedule:run >> /dev/null 2>&1

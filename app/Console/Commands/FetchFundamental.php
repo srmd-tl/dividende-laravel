@@ -42,13 +42,15 @@ class FetchFundamental extends Command
      */
     public function handle()
     {
+        throw new \RuntimeException('Here Goes Your Error Message');
+
         $stock   = Eod::stock();
         $symbols = Symbol::whereType('Common Stock')->get();
         // Log::info('Working!');
         // Log::info($symbols->count());
         // dd($symbols->count());
 
-        foreach ($symbols as $symbol) {
+         foreach ($symbols as $symbol) {
             try {
                 $data = json_decode($stock->fundamental($symbol->Code . '.' . ($symbol->Country == 'USA' ? 'US' : $symbol->Exchange))->json());
                 if ($data) {
