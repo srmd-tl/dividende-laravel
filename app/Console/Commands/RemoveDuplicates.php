@@ -38,15 +38,10 @@ class RemoveDuplicates extends Command
      */
     public function handle()
     {
-        $duplicateRecords = Fundamental::select('sector')
-            ->selectRaw('count(sector) as occurences')
-            ->groupBy('sector')
-            ->having('occurences', '>', 1)
-        
-            ->get();
 
-        foreach ($duplicateRecords as $record) {
-            $record->delete();
-        }
+
+        $todaysAll =Fundamental::whereDate('created_at', Carbon::now())->delete();
+
+     
     }
 }

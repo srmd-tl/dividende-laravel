@@ -28,8 +28,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('fetch:fundamental')
         // ->everyMinute();
             ->daily();
-        $schedule->command('remove:dups')
-            ->everyMinute();
+        // $schedule->command('remove:dups')
+        //     ->everyMinute();
 
         // ->dailyAt('13:00');//1 am
         // ->dailyAt('14:00');//2 pm
