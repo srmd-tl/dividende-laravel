@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use App\Fundamental;
 use Illuminate\Console\Command;
-
+use Carbon\Carbon;
 class RemoveDuplicates extends Command
 {
     /**
@@ -38,11 +38,11 @@ class RemoveDuplicates extends Command
      */
     public function handle()
     {
-        $duplicateRecords = Fundamental::select('name')
-            ->selectRaw('count(`name`) as `occurences`')
-            ->from('users')
-            ->groupBy('name')
+        $duplicateRecords = Fundamental::select('sector')
+            ->selectRaw('count(sector) as occurences')
+            ->groupBy('sector')
             ->having('occurences', '>', 1)
+        
             ->get();
 
         foreach ($duplicateRecords as $record) {
