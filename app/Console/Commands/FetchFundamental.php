@@ -42,7 +42,6 @@ class FetchFundamental extends Command
      */
     public function handle()
     {
-        throw new \RuntimeException('Here Goes Your Error Message');
 
         $stock   = Eod::stock();
         $symbols = Symbol::whereType('Common Stock')->get();

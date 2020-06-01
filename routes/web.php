@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/','FundamentalController@index')->name('index');
+Route::get('/', 'FundamentalController@index')->name('index');
 
-Route::resource('symbol','SymbolController');
+Route::resource('symbol', 'SymbolController');
+
+Route::get('/time', function () {
+    return \Carbon\Carbon::now();
+});
